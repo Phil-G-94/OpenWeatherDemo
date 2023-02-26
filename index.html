@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Weather Demo</title>
+  <script src="app.js" defer></script>
+  <!-- add fonts -->
+  <!-- add CSS -->
+</head>
+<body>
+  <h1>Open Weather Demo</h1>
+  <!-- add container for the longitude and latitude inputs -->
+  <div class="container">
+    <label for="latitude">
+      <input type="text" inputmode="numeric" id="latitude" name="latitude">
+      latitude
+    </label>
+    <label for="longitude">
+      <input type="text" inputmode="numeric" id="longitude" name="longitude">
+      longitude
+    </label>
+
+    <button id="get-weather">Get the weather!</button>
+  </div>
+
+  <div class="weather-display">
+    
+    <h2 id="location">Location</h2>
+    <p id="temp">Temp </p>
+    <p id="temp-min">Temp Min</p>
+    <p id="temp-max">Temp Max</p>
+    <p id="feels-like">Feels Like</p>
+    <p id="humidity">Humidity</p>
+  </div>
+</body>
+</html>
