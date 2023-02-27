@@ -12,6 +12,7 @@ const app = {
 
 
   getWeather: () => {
+    
 
     let latitude = document.querySelector('#latitude').value;
     let longitude = document.querySelector('#longitude').value;
