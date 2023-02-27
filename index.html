@@ -14,42 +14,50 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      background: rgba(198, 196, 201, 0.623);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(5.5px);
+      -webkit-backdrop-filter: blur(5.5px);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+  </style>
 </head>
 
-<body class="mx-auto" style="width: 75%; font-family: 'Roboto', sans-serif;">
-  <h1 class="text-center">Open Weather Demo</h1>
+<body class="mx-auto" style="width: 75%;">
+  <h1 class="text-center">Not Another Weather App Weather App</h1>
 
   <div class="d-grid gap-5 text-center">
     <div class="col-md">
       <div class="floating-form">
-        <label for="latitude">Latitude</label>
+        <label for="latitude" aria-label="Latitude input">Latitude</label>
         <input class="form-control" type="text" inputmode="numeric" id="latitude" name="latitude" required />
       </div>
       <div class="floating-form">
-        <label for="longitude">Longitude</label>
+        <label for="longitude" aria-label="Longitude input">Longitude</label>
         <input class="form-control" type="text" inputmode="numeric" id="longitude" name="longitude" required />
       </div>
     </div>
 
     <div class="btn-group text-center" role="group" aria-label="Buttons">
-      <button class="btn btn-primary btn-md" id="get-weather" aria-label="Weather button">
+      <button class="btn btn-primary btn-sm" id="get-weather" aria-label="Weather button">
         Fetch weather!
       </button>
-      <button class="btn btn-info btn-md" id="get-location" aria-label="Geolocation button">
+      <button class="btn btn-info btn-sm" id="get-location" aria-label="Geolocation button">
         Geolocate me.
       </button>
     </div>
   </div>
 
   <div class="card text-center" id="weather-display">
-    <p class="">
+    <p class="text-left">
       Provide your latitude and longitude of choice then click the 'Fetch Weather' button to retrieve weather data.
     </p>
-    <p>
-      Otherwise, use the 'Geolocate me.' button to your pass in your browser co-ordinates then click 'Fetch'.
+    <p class="text-left">
+      Use the 'Geolocate me.' button to your pass in your browser co-ordinates then click 'Fetch'.
     </p>
   </div>
 </body>
