@@ -4,6 +4,10 @@ const app = {
     document
       .querySelector('#get-weather')
       .addEventListener('click', app.getWeather);
+
+    document
+      .querySelector('#get-location')
+      .addEventListener('click', app.getLocation);
   },
 
 
@@ -30,37 +34,59 @@ const app = {
 
 
   displayData: (json) => {
+    const $display = document.querySelector('#weather-display')
 
-    let $image = document.querySelector('.weather-icon');
-    // destructuring to pull icon from the weather array
-    const {icon} = json.weather[0];
-   
+    let $location = document.createElement('h2');
+    $location.textContent = json.name;
 
-    let $location = document.querySelector('#location');
-    let $temp = document.querySelector('#temp');
-    let $temp_min = document.querySelector('#temp-min');
-    let $temp_max = document.querySelector('#temp-max');
-    let $feels_like = document.querySelector('#feels-like');
-    let $humidity = document.querySelector('#humidity');
+    let $temp = document.createElement('p');
+    $temp.textContent = "Temp:\n " + json.main["temp"] + " " + "\xB0" + "C";
+
+    let $temp_min = document.createElement('p');
+    $temp_min.textContent = "Min temp:\n " + json.main["temp_min"] + " " + "\xB0" + "C";
+
+    let $temp_max = document.createElement('p');
+    $temp_max.textContent = "Max temp:\n " + json.main["temp_max"] + " " + "\xB0" + "C";
+
+    let $feels_like = document.createElement('p');
+    $feels_like.textContent = "Feels like:\n " + json.main["feels_like"] + " " + "\xB0" + "C";
+
+    let $humidity = document.createElement('p');
+    $humidity.textContent = "Humidity:\n " + json.main["humidity"] + " " + "\u0025";
 
 
-    /* 
-    while($display.firstChild) {
+    while ($display.firstChild) {
       $display.removeChild($display.firstChild);
     }
-    */
 
-    $location.append(" " + json.name);
-    $temp.append(" " + json.main["temp"] + " " + "\xB0" + "C");
-    $temp_min.append(" " + json.main["temp_min"] + " " + "\xB0" + "C");
-    $temp_max.append(" " + json.main["temp_max"] + " " + "\xB0" + "C");
-    $feels_like.append(" " + json.main["feels_like"] + " " + "\xB0" + "C");
-    $humidity.append(" " + json.main["humidity"] + " " + "\u0025");
+    $display.append($location, $temp, $temp_min, $temp_max, $feels_like, $humidity);
 
-    $image.innerHTML = `<img src="http://openweathermap.org/img/wn/${icon}@2x.png" >`
+  },
+
+  getLocation: () => {
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 1000 * 60 * 5
+    }
+
+    if (!navigator.geolocation) {
+      console.error(`Your browser doesn't support Geolocation`);
+    }
+
+    function success(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      document.querySelector('#latitude').value = latitude;
+      document.querySelector('#longitude').value = longitude;
+    }
+
+    function error() {
+      console.error("Geolocation failed.")
+    }
+    navigator.geolocation.getCurrentPosition(success, error, options);
     
   }
-
 
 }
 
