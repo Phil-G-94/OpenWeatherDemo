@@ -35,7 +35,7 @@ const app = {
 
 
   displayData: (json) => {
-    const $display = document.querySelector('#weather-display')
+    const $display = document.querySelector('#weather-display');
 
     let $location = document.createElement('h2');
     $location.textContent = json.name;
@@ -83,7 +83,7 @@ const app = {
     }
 
     function error() {
-      console.error("Geolocation failed.")
+      console.error("Geolocation failed.");
     }
     navigator.geolocation.getCurrentPosition(success, error, options);
     
