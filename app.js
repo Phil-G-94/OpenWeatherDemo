@@ -89,6 +89,6 @@ const app = {
     
   }
 
-}
+};
 
 app.init();
